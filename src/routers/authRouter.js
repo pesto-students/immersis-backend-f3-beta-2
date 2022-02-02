@@ -1,12 +1,15 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+const csrf = require("csurf");
 const jwt = require("jsonwebtoken");
 const { User } = require("../models/userModel");
 const { SendEmail } = require("../utils/sendEmail/sendEmail");
 const logger = require("../logging/logging");
 
-router.post("/", async (req, res) => {
+const csrfProtection = csrf({ cookie: true });
+
+router.post("/", csrfProtection, async (req, res) => {
     const { firstName, lastName, email, password, confirmPassword } = req.body;
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
         return res.status(200).json({
@@ -73,7 +76,7 @@ router.post("/", async (req, res) => {
     });
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", csrfProtection, async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -137,9 +140,13 @@ router.get("/logout", (req, res) => {
     }).send();
 });
 
-router.get("/loggedin", (req, res) => {
+router.get("/loggedin", csrfProtection, (req, res) => {
     const { cookies } = req;
-    const { token } = cookies;
+    const { token, csrfToken } = cookies;
+
+    if (!csrfToken) {
+        res.cookie("csrfToken", req.csrfToken());
+    }
 
     if (!token) {
         return res.json(false);
@@ -157,7 +164,7 @@ router.get("/loggedin", (req, res) => {
     }
 });
 
-router.post("/forgot", async (req, res) => {
+router.post("/forgot", csrfProtection, async (req, res) => {
     const { email } = req.body;
     let user;
     try {
@@ -200,7 +207,7 @@ router.post("/forgot", async (req, res) => {
     }
 });
 
-router.post("/reset/:token", async (req, res) => {
+router.post("/reset/:token", csrfProtection, async (req, res) => {
     const { password, confirmPassword } = req.body;
     let user;
     try {
