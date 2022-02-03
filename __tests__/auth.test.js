@@ -11,7 +11,7 @@ describe("Test Authentication Endpoints", () => {
     test("/GET Logged in status", async () => {
         const resp = await request.get("/auth/loggedin");
         expect(resp.statusCode).toBe(200);
-        expect(resp.body).toBe(false);
+        expect(resp.body.status).toBe(false);
     });
 
     test("/POST Register", async () => {
