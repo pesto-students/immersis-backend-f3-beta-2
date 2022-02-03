@@ -137,24 +137,28 @@ router.get("/logout", (req, res) => {
 router.get("/loggedin", csrfProtection, (req, res) => {
     const { cookies } = req;
     const { token, csrfToken } = cookies;
+    const toSend = {};
 
     if (!csrfToken) {
-        res.cookie("csrfToken", req.csrfToken());
+        toSend.csrfToken = req.csrfToken();
     }
 
     if (!token) {
-        return res.json(false);
+        toSend.status = false;
+        return res.json(toSend);
     }
     try {
         const verified = jwt.verify(token, process.env.JWT_SECRET);
         if (!verified) {
-            return res.json(false);
+            toSend.status = false;
+            return res.json(toSend);
         }
-
-        return res.json(true);
+        toSend.status = true;
+        return res.json(toSend);
     } catch (err) {
         logger.error(err);
-        return res.json(false);
+        toSend.status = false;
+        return res.json(toSend);
     }
 });
 
