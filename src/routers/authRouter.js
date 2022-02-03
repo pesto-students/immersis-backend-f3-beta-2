@@ -7,7 +7,9 @@ const { User } = require("../models/userModel");
 const { SendEmail } = require("../utils/sendEmail/sendEmail");
 const logger = require("../logging/logging");
 
-const csrfProtection = csrf({ cookie: true });
+const csrfProtection = csrf({
+    cookie: { httpOnly: false, secure: true, sameSite: "none" }
+});
 
 router.post("/", csrfProtection, async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
