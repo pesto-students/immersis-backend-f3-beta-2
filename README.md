@@ -122,7 +122,7 @@ and how to install them.
 
 -   [PRD](https://github.com/pesto-students/immersis-frontend-f3-beta-2/blob/readme/docs/prd.pdf)
 
--   [Wireframes](https://drive.google.com/file/d/1exO60-g4It1k5m_aaqjNBaskljzBF8DC/view?usp=sharing)
+-   [Wireframes](https://github.com/pesto-students/immersis-frontend-f3-beta-2/blob/readme/docs/wireframe.pdf)
 
 -   [HLD](https://github.com/pesto-students/immersis-frontend-f3-beta-2/blob/readme/docs/hld.pdf)
 
