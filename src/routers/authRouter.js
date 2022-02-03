@@ -140,6 +140,7 @@ router.get("/loggedin", csrfProtection, (req, res) => {
     const toSend = {};
 
     if (!csrfToken) {
+        res.cookie("csrfToken", req.csrfToken());
         toSend.csrfToken = req.csrfToken();
     }
 
