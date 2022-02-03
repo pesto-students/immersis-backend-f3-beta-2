@@ -4,28 +4,23 @@
 
 ## **Table of Contents**
 
-1.  [About The
-    Project](#about-the-project)
+1.  [About The Project](#about-the-project)
 
-2.  [Getting
-    Started](#getting-started)
+2.  [Getting Started](#getting-started)
 
     1.  [Prerequisites](#Prerequisites)
 
     2.  [Installation](#installation)
 
-3.  [Tech
-    Stack](#tech-stack)
+3.  [Tech Stack](#tech-stack)
 
-4.  [Tools and
-    Integration](#tools)
+4.  [Tools](#tools)
 
 5.  [Resources](#resources)
 
 6.  [Developers](#developers)
 
-7.  [Working & UI
-    Screens](#working--ui-screens)
+7.  [UI Screens](#ui-screens)
 
 ## **About The Project**
 
@@ -53,9 +48,9 @@ and how to install them.
 
 1.  Clone the repos backend & frontend
 
-> git clone https://github.com/pesto-students/song-finder-backend-f3-beta-2/tree/master
+> git clone https://github.com/pesto-students/immersis-backend-f3-beta-2/tree/master
 
-> git clone https://github.com/pesto-students/song-finder-frontend-f3-beta-2/tree/master
+> git clone https://github.com/pesto-students/immersis-frontend-f3-beta-2/tree/master
 
 2.  Install NPM packages in both
 
@@ -108,10 +103,10 @@ and how to install them.
 ### **Source Code Repo**
 
 -   Front End Source Repo -
-    <https://github.com/pesto-students/song-finder-frontend-f3-beta-2/tree/master>
+    <https://github.com/pesto-students/immersis-frontend-f3-beta-2/tree/master>
 
 -   Back End Source Repo -
-    <https://github.com/pesto-students/song-finder-backend-f3-beta-2/tree/master>
+    <https://github.com/pesto-students/immersis-backend-f3-beta-2/tree/master>
 
 ## **Developers**
 
@@ -125,11 +120,15 @@ and how to install them.
 
 ## **Resources**
 
--   [PRD](https://drive.google.com/file/d/1ncPG_30GHJTbWQtCLLYm1pCUBMU1UOIQ/view?usp=sharing)
+-   [PRD](https://github.com/pesto-students/immersis-frontend-f3-beta-2/blob/readme/docs/prd.pdf)
 
 -   [Wireframes](https://drive.google.com/file/d/1exO60-g4It1k5m_aaqjNBaskljzBF8DC/view?usp=sharing)
 
--   [HLD](https://drive.google.com/file/d/1zissH9ox920o-y86EdtfzJNawBMfDD44/view?usp=sharing)
+-   [HLD](https://github.com/pesto-students/immersis-frontend-f3-beta-2/blob/readme/docs/hld.pdf)
+
+-   [Stack Justification](https://github.com/pesto-students/immersis-frontend-f3-beta-2/blob/readme/docs/stack.pdf)
+
+-   [API Docs](https://github.com/pesto-students/immersis-backend-f3-beta-2/blob/master/API.md)
 
 ## **UI Screens**
 
