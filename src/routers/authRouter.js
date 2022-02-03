@@ -10,8 +10,8 @@ const logger = require("../logging/logging");
 const csrfProtection = csrf({ cookie: true });
 
 router.post("/", csrfProtection, async (req, res) => {
-    const { firstName, lastName, email, password, confirmPassword } = req.body;
-    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+    const { firstName, lastName, email, password } = req.body;
+    if (!firstName || !lastName || !email || !password) {
         return res.status(200).json({
             success: false,
             message: "Please provide all necessary fields.",
@@ -25,13 +25,7 @@ router.post("/", csrfProtection, async (req, res) => {
             data: {}
         });
     }
-    if (password !== confirmPassword) {
-        return res.status(200).json({
-            success: false,
-            message: "Password didn't match",
-            data: {}
-        });
-    }
+
     let existingUser;
     try {
         existingUser = await User.findOne({ email });
@@ -166,6 +160,14 @@ router.get("/loggedin", csrfProtection, (req, res) => {
 
 router.post("/forgot", csrfProtection, async (req, res) => {
     const { email } = req.body;
+
+    if (!email) {
+        return res.json({
+            success: false,
+            message: "Please provide all fields"
+        });
+    }
+
     let user;
     try {
         user = await User.findOne({ email });
@@ -175,7 +177,7 @@ router.post("/forgot", csrfProtection, async (req, res) => {
 
     if (!user) {
         return res.json({
-            succes: false,
+            success: false,
             message: "User with this email address doesn't exist"
         });
     }
@@ -208,7 +210,15 @@ router.post("/forgot", csrfProtection, async (req, res) => {
 });
 
 router.post("/reset/:token", csrfProtection, async (req, res) => {
-    const { password, confirmPassword } = req.body;
+    const { password } = req.body;
+
+    if (!password) {
+        return res.json({
+            success: false,
+            message: "Please provide all fields"
+        });
+    }
+
     let user;
     try {
         user = await User.findOne({
@@ -233,12 +243,6 @@ router.post("/reset/:token", csrfProtection, async (req, res) => {
         });
     }
 
-    if (password !== confirmPassword) {
-        return res.status(200).json({
-            success: false,
-            message: "Password didn't match"
-        });
-    }
     const passwordHash = await bcrypt.hash(password, 10);
     user.passwordHash = passwordHash;
     user.resetToken = undefined;
