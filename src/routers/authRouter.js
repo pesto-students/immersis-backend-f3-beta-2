@@ -8,7 +8,7 @@ const { SendEmail } = require("../utils/sendEmail/sendEmail");
 const logger = require("../logging/logging");
 
 const csrfProtection = csrf({
-    cookie: { httpOnly: false, secure: true, sameSite: "none" }
+    cookie: true
 });
 
 router.post("/", csrfProtection, async (req, res) => {
@@ -64,11 +64,10 @@ router.post("/", csrfProtection, async (req, res) => {
         process.env.JWT_SECRET
     );
 
-    return res.cookie("token", token, { secure: true, sameSite: "none" }).json({
+    return res.cookie("token", token, { secure: true, httpOnly: true }).json({
         success: true,
         message: "Successfully Registered",
-        data: { firstName, lastName, email },
-        token
+        data: { firstName, lastName, email }
     });
 });
 
@@ -116,15 +115,14 @@ router.post("/login", csrfProtection, async (req, res) => {
         },
         process.env.JWT_SECRET
     );
-    return res.cookie("token", token, { secure: true, sameSite: "none" }).json({
+    return res.cookie("token", token, { secure: true, httpOnly: true }).json({
         success: true,
         message: "Successfully Logged In",
         data: {
             firstName: existingUser.firstName,
             lastName: existingUser.lastName,
             email: existingUser.email
-        },
-        token
+        }
     });
 });
 
@@ -132,19 +130,16 @@ router.get("/logout", (req, res) => {
     res.cookie("token", "", {
         secure: true,
         expires: new Date(0),
-        sameSite: "none"
+        httpOnly: true
     }).send();
 });
 
 router.get("/loggedin", csrfProtection, (req, res) => {
     const { cookies } = req;
-    const { token, csrfToken } = cookies;
+    const { token } = cookies;
     const toSend = {};
 
-    if (!csrfToken) {
-        res.cookie("csrfToken", req.csrfToken());
-        toSend.csrfToken = req.csrfToken();
-    }
+    res.cookie("csrfToken", req.csrfToken(), { httpOnly: true, secure: true });
 
     if (!token) {
         toSend.status = false;
