@@ -1,0 +1,74 @@
+{
+    "name": "immersis-backend",
+    "version": "1.0.0",
+    "description": "Music,Videos & Lyrics all in one place",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "start": "node src/server/server.js",
+        "dev": "nodemon src/server/server.js",
+        "lint": "eslint --ext js,jsx ./",
+        "lint:fix": "eslint --fix --ext js,jsx ./",
+        "prettier": "prettier --check **/*.js",
+        "prettier:fix": "prettier --write **/*.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pesto-students/song-finder-backend-f3-beta-2.git"
+    },
+    "keywords": [
+        "Node;Express;API"
+    ],
+    "author": "Mehedi, Ubair & Harshit",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/pesto-students/song-finder-backend-f3-beta-2/issues"
+    },
+    "homepage": "https://github.com/pesto-students/song-finder-backend-f3-beta-2#readme",
+    "dependencies": {
+        "appmetrics-dash": "^5.3.0",
+        "axios": "^0.24.0",
+        "bcrypt": "^5.0.1",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "csurf": "^1.11.0",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.2",
+        "genius-lyrics-api": "^3.2.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb-memory-server": "^8.2.0",
+        "mongoose": "^6.1.3",
+        "node-gyp": "^8.4.1",
+        "nodemailer": "^6.7.2",
+        "winston": "^3.5.0",
+        "winston-daily-rotate-file": "^4.6.0",
+        "youtube-music-api": "^1.0.6"
+    },
+    "devDependencies": {
+        "eslint": "^8.6.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-node": "^4.1.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "husky": "^4.3.8",
+        "jest": "^27.4.7",
+        "lint-staged": "^12.1.7",
+        "nodemon": "^2.0.15",
+        "prettier": "^2.5.1",
+        "supertest": "^6.2.2"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,jsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ]
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "env": {
+        "commonjs": true,
+        "node": true,
+        "jest": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:node/recommended",
+        "airbnb-base",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 13
+    },
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        "no-console": "off",
+        "prettier/prettier": "error",
+        "func-names": "off",
+        "no-underscore-dangle": "off",
+        "node/no-unsupported-features/es-syntax": "off",
+        "node/no-unpublished-require": "off"
+    }
+}
