@@ -58,13 +58,13 @@ Test Credentials:
 
 # **Technology Stack**
 
--   [React.js](https://reactjs.org/)
-
--   [Redux](https://redux.js.org/)
-
 -   [Node.js](https://nodejs.org/en/)
 
+-   [Express.js](https://expressjs.com/)
+
 -   [MongoDB](https://www.mongodb.com/)
+
+-   [Axios](https://axios-http.com/)
 
 # **Authors**
 
